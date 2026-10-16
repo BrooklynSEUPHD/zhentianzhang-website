@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zhentian Zhang · Wireless Communications &amp; Signal Processing</title>
+  <meta name="description" content="Personal homepage of Zhentian Zhang: wireless communications, statistical signal processing, fluid antenna systems, ISAC and unsourced random access.">
+  <meta name="keywords" content="Zhentian Zhang, Zhang Zhentian, wireless communications, statistical signal processing, 6G, fluid antenna systems, ISAC, unsourced random access">
+  <meta name="color-scheme" content="light">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <!-- 样式：按需分模块，改一个模块不影响其它 -->
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/publications.css">
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="site.skip">Skip to main content</a>
+
+  <!-- 页眉：只放姓名与研究方向，不放会频繁变动的单位信息 -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <!-- 中英切换：只切换界面文案，论文与正文内容保持英文 -->
+      <div class="langswitch" role="group" data-i18n-aria="site.langSwitch">
+        <button type="button" class="lang-btn" data-lang-btn="en">EN</button>
+        <button type="button" class="lang-btn" data-lang-btn="zh">中文</button>
+      </div>
+
+      <a class="brand" href="#profile">
+        <span class="brand-mark" id="brand-mark">ZZ</span>
+        <span class="brand-text">
+          <strong id="brand-name">Zhentian Zhang</strong>
+          <em id="brand-tagline">Wireless Communications · Statistical Signal Processing · 6G</em>
+        </span>
+      </a>
+      <div class="topbar-links" id="topbar-links"></div>
+    </div>
+  </header>
+
+  <!-- 横向：栏目导航（一次一个栏目，可左右滑动） -->
+  <nav class="railnav" aria-label="Sections">
+    <div class="railnav-inner">
+      <ul class="rail" id="rail" role="tablist"></ul>
+    </div>
+  </nav>
+
+  <!-- 纵向：当前栏目的内容 -->
+  <main class="panels" id="main">
+    <div id="panels"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p><span data-i18n="site.lastUpdated">Last updated</span> <span id="updated">—</span> · © <span id="year">2026</span> <span id="footer-name">Zhentian Zhang</span></p>
+      <p><a href="#profile" data-i18n="site.backTop">Back to top</a></p>
+    </div>
+  </footer>
+
+  <!-- 界面文案（中／英） -->
+  <script src="assets/js/i18n.js"></script>
+
+  <!-- 数据：按栏目分文件，改内容只动这里 -->
+  <script src="assets/js/data.profile.js"></script>
+  <script src="assets/js/data.news.js"></script>
+  <script src="assets/js/data.publications.js"></script>
+  <script src="assets/js/data.academic.js"></script>
+  <script src="assets/js/data.other.js"></script>
+  <script src="assets/js/data.moments.js"></script>
+  <script src="assets/js/data.dog.js"></script>
+
+  <!-- 模板与逻辑 -->
+  <script src="assets/js/render.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
