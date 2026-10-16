@@ -1,0 +1,160 @@
+/* ==========================================================================
+   publications.css — 论文区：分组、排序视图、徽章
+   ========================================================================== */
+
+/* ---------------- 顶部工具条 ---------------- */
+.pub-toolbar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 14px; flex-wrap: wrap; margin-bottom: 16px;
+}
+.pub-views { display: inline-flex; padding: 3px; gap: 2px; background: var(--paper-3); border: 1px solid var(--line); border-radius: 999px; }
+.pub-views button {
+  border: 0; background: transparent; cursor: pointer;
+  padding: 6px 13px; border-radius: 999px;
+  font-family: inherit; font-size: 12.8px; font-weight: 600; color: var(--ink-2);
+  transition: .18s ease;
+}
+.pub-views button:hover { color: var(--accent); }
+.pub-views button.active { background: var(--paper-2); color: var(--accent); box-shadow: var(--shadow-1); }
+.pub-hint { font-size: 12.6px; color: var(--muted); }
+
+.pub-sections { display: grid; gap: 14px; }
+.pub-subhead {
+  margin: 18px 0 10px; font-family: var(--sans); font-size: 12.2px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+}
+.pub-subhead:first-child { margin-top: 0; }
+
+/* ---------------- 统计条 ---------------- */
+.pub-stats { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.pub-stat {
+  display: inline-flex; align-items: baseline; gap: 7px;
+  padding: 7px 14px; border-radius: 999px;
+  background: var(--paper-2); border: 1px solid var(--line);
+  font-size: 13px; color: var(--ink-2);
+}
+.pub-stat b { font-family: var(--serif); font-size: 16px; color: var(--accent); font-variant-numeric: tabular-nums; }
+
+/* ---------------- 大类分组（已录用 / 未录用） ---------------- */
+.pub-section { margin-bottom: 26px; }
+.pub-section > summary {
+  cursor: pointer; list-style: none;
+  display: flex; align-items: center; gap: 12px;
+  padding: 13px 18px; border-radius: var(--r-md);
+  background: linear-gradient(100deg, rgba(30,58,95,.07), rgba(30,58,95,0));
+  border: 1px solid #dee4ec;
+  transition: .2s ease;
+}
+.pub-section > summary::-webkit-details-marker { display: none; }
+.pub-section > summary:hover { border-color: var(--accent); }
+.pub-section > summary h3 { font-size: 18px; flex: none; }
+.pub-section > summary .caret {
+  width: 16px; height: 16px; flex: none; color: var(--accent); transition: transform .2s ease;
+}
+.pub-section[open] > summary .caret { transform: rotate(90deg); }
+.pub-section > summary .n { margin-left: auto; font-size: 12.6px; color: var(--muted); }
+.pub-section .pub-wrap { padding-top: 16px; }
+
+/* ---------------- 期刊分组头（按期刊归组视图） ---------------- */
+.venue-group { margin-bottom: 22px; }
+.venue-head {
+  display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  padding: 0 2px 10px; border-bottom: 1px solid var(--line); margin-bottom: 12px;
+}
+.venue-head .vh-abbr {
+  font-family: var(--serif); font-size: 17px; font-weight: 650; color: var(--ink);
+}
+.venue-head .vh-full { font-size: 12.8px; color: var(--muted); flex: 1 1 200px; }
+.venue-head .vh-n { font-size: 12.4px; color: var(--muted); white-space: nowrap; }
+.venue-group .pub-list { display: grid; gap: 10px; }
+
+/* ---------------- 论文条目 ---------------- */
+.pub-list { display: grid; gap: 10px; }
+.pub-item {
+  display: grid; grid-template-columns: 58px minmax(0, 1fr); gap: 12px;
+  padding: 15px 17px;
+  background: var(--paper-2); border: 1px solid var(--line);
+  border-radius: var(--r-md); box-shadow: 0 1px 2px rgba(23,34,44,.03);
+  transition: .2s ease;
+  border-left: 3px solid transparent;
+}
+.pub-item:hover { box-shadow: var(--shadow-1); border-color: #e0e5ec; }
+.pub-item.is-first { border-left-color: var(--accent); }
+.pub-item.is-co { border-left-color: #ccd3da; }
+
+.pub-no {
+  font-family: var(--serif); font-size: 13.5px; font-weight: 650;
+  color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 2px;
+}
+.pub-item.is-first .pub-no { color: var(--accent); }
+
+.pub-main { min-width: 0; }
+.pub-authors { font-size: 14.4px; color: var(--ink-2); margin-bottom: 4px; line-height: 1.55; }
+.pub-authors .me {
+  font-weight: 700; color: var(--ink);
+  background: linear-gradient(180deg, rgba(30,58,95,0) 62%, rgba(30,58,95,.16) 62%);
+  padding: 0 1px;
+}
+.pub-authors .corr { font-size: 11.6px; color: var(--accent); font-weight: 600; }
+
+.pub-title {
+  font-family: var(--serif); font-size: 15.6px; line-height: 1.45; color: var(--ink);
+  margin-bottom: 5px;
+}
+/* 标题本身即链接：优先 DOI → arXiv → PDF → 按标题检索 */
+.pub-title a { color: inherit; border-bottom: 1px solid rgba(30, 58, 95, .28); transition: .16s ease; }
+.pub-title a:hover { color: var(--accent); border-bottom-color: var(--accent); text-decoration: none; }
+.pub-title .ext {
+  display: inline-block; width: 12px; height: 12px; margin-left: 5px;
+  vertical-align: baseline; opacity: .45;
+}
+.pub-venue { font-size: 13.6px; color: var(--ink-2); }
+/* 期刊名一律「全称（缩写）」，不再依赖悬停 */
+.pub-venue .v-full { color: var(--ink-2); }
+.pub-venue .v-abbr { font-weight: 700; color: var(--accent); }
+.pub-venue .v-note { color: var(--muted); }
+.pub-venue .v-detail { color: var(--muted); }
+.pub-venue .v-year { font-variant-numeric: tabular-nums; }
+
+.pub-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; align-items: center; }
+.pub-tags a { font-size: 12.2px; font-weight: 600; color: var(--blue); border-bottom: 1px solid rgba(43,93,138,.35); }
+.pub-tags a:hover { text-decoration: none; color: var(--accent); border-color: var(--accent); }
+
+/* 徽章 */
+.badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 2.5px 9px; border-radius: 6px;
+  font-size: 11.6px; font-weight: 700; letter-spacing: .015em;
+  background: var(--slate-soft); color: var(--slate); white-space: nowrap;
+}
+.badge.if    { background: var(--blue-soft);  color: var(--blue); }
+.badge.q     { background: var(--accent-soft); color: var(--accent); }
+.badge.esi   { background: var(--gold-soft);  color: var(--gold); border: 1px solid #e6d9be; }
+.badge.award { background: var(--plum-soft);  color: var(--plum); }
+.badge.mentor{ background: #f1f3f5; color: #64717c; }
+.badge.state { background: transparent; color: var(--muted); border: 1px dashed var(--line); }
+.badge.granted { background: var(--accent-soft); color: var(--accent); }
+
+/* 贡献说明 */
+.pub-contrib { margin-top: 9px; }
+.pub-contrib > summary {
+  cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12.4px; font-weight: 650; color: var(--accent);
+}
+.pub-contrib > summary::-webkit-details-marker { display: none; }
+.pub-contrib > summary .caret { width: 13px; height: 13px; transition: transform .2s; }
+.pub-contrib[open] > summary .caret { transform: rotate(90deg); }
+.pub-contrib p {
+  margin-top: 7px; padding: 11px 13px; border-radius: var(--r-sm);
+  background: var(--paper-3); font-size: 13.6px; color: var(--ink-2); border: 1px solid var(--line-2);
+}
+
+/* 专利 */
+.patent-item .pub-title { font-size: 15px; }
+.patent-item .pat-no { font-size: 12.6px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+@media (max-width: 620px) {
+  .pub-item { grid-template-columns: 1fr; gap: 6px; }
+  .pub-no { padding-top: 0; }
+  .pub-views { width: 100%; overflow-x: auto; }
+}
